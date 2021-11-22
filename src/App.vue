@@ -6,6 +6,8 @@
 
 
 <script>
+
+
 export default {
   watch: {
     $route () {
@@ -13,10 +15,23 @@ export default {
         return el.categoryName === this.$route.params.slug
       })
 
-      if (categoryIndex >= 0)
+      if (categoryIndex >= 0) {
         this.$store.commit('setCurrentKey', categoryIndex);
+      }
     }
+  },
+  created() {
+    if (localStorage.state) {
+      this.$store.commit('loadStateFromLocalStorage', JSON.parse( localStorage.state))
+    }
+
+    this.$store.subscribe((mutation, state) => {
+      localStorage.setItem('state', JSON.stringify(state))
+    })
   }
+
+
+
 }
 </script>
 
