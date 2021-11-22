@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view  :key="$route.path"/>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
+<script>
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  watch: {
+    $route () {
+      const categoryIndex = this.$store.state.categories.findIndex((el) => {
+        return el.categoryName === this.$route.params.slug
+      })
+
+      if (categoryIndex >= 0)
+        this.$store.commit('setCurrentKey', categoryIndex);
+    }
   }
 }
 </script>
 
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root {
+  --font-color: #6C6C6C;
+  --font-pale-color: #E4E4E4;
+  --background-select-color: #EEF4F3;
+  --border-color: #e4e4e4;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--font-color);
+  
+  font-size: 16px;
 }
 </style>
