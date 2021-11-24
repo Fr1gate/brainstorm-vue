@@ -10,7 +10,7 @@
                 <li v-for="category in categories" :key="category.categoryName" class='sidemenu__item' >
                     <router-link 
                         :to="{
-                            name: 'Categories',
+                            name: 'Tasks',
                             params: {slug: category.categoryName}
                         }"
                         class="sidemenu__link"

@@ -6,17 +6,15 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: {
-      name: 'Categories',
-      params: {slug: 'Дом'}
-    }
+    component: () => 
+      import(/* webpackChunkName: "Categories" */ '../layouts/DefaultLayout.vue'),
+    children: [{
+      path: ':slug',
+      name: "Tasks",
+      component: () => import(/* webpackChunkName: "Categories" */ '../views/Tasks.vue'),
+      props: true,
+    }]
   },
-  {
-    path: "/:slug",
-    name: "Categories",
-    component: () => import(/* webpackChunkName: "Categories" */ '../views/Categories.vue'),
-    props: true,
-  }
 ]
 
 const router = new VueRouter({

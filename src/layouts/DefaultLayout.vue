@@ -1,26 +1,17 @@
 <template>
     <div class="page">
         <SideMenu />
-        <Tasks />
+        <router-view :key="$route.path" />
     </div>
 </template>
 
 <script>
 import SideMenu from '@/components/SideMenu.vue';
-import Tasks from '@/components/Tasks.vue';
 
 export default {
-    // props: {
-    //     slug: {
-    //         type: String,
-    //         required: true,
-    //         default: 'Дом'
-    //     }
-    // },
     name: 'Categories',
     components: {
         SideMenu,
-        Tasks
     }
 }
 </script>

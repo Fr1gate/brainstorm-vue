@@ -1,17 +1,10 @@
 <template>
     <div class="container">
-        <TodoList 
-            tasks={this.props.category.tasksToDo}
-            deleteTask={this.props.deleteTask}
-            checkTask={this.props.checkTask}
-            editTask={this.props.editTask}    
+        <TodoList  
         />
-        <DoneList 
-            tasks={this.props.category.tasksDone}
-            uncheckTask={this.props.uncheckTask}
+        <DoneList
         />
         <AddTask 
-            addTask={this.props.addTask} 
         />
     </div>
 </template>

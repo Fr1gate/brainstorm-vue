@@ -11,7 +11,7 @@
 export default {
     data() {
         return {
-            text: '123',
+            text: '',
             categoryName:  this.$route.params.slug
         }
     },
